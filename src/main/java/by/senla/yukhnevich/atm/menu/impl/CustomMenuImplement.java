@@ -22,7 +22,6 @@ public class CustomMenuImplement implements CustomMenu {
     private final CustomAtmServiceImplement serviceImplement = new CustomAtmServiceImplement();
     private final CustomSecurityAtm securityAtm = new CustomSecurityAtm();
     private final CustomWriterImplement writerImplement = new CustomWriterImplement();
-
     /**
      * Method check is the card number, PIN code correct and is the card blocked.
      * If everything is fine then call controlPanel.
@@ -46,10 +45,13 @@ public class CustomMenuImplement implements CustomMenu {
                 try {
                     int i;
                     for (i = 0; i < 3; i++) {
-                        if (securityAtm.checkPin(card.getPinCode(), scanner.nextInt())) {
-                            System.out.println("Welcome!");
-                            controlPanel(card);
-                            break;
+                        String inputUser = scanner.nextLine();
+                        if (inputUser != null && inputUser.matches("[0-9]+")) {
+                            if (securityAtm.checkPin(card.getPinCode(), Integer.parseInt(inputUser))) {
+                                System.out.println("Welcome!");
+                                controlPanel(card);
+                                break;
+                            }
                         } else {
                             System.err.println("Pin is wrong! Try again: ");
                         }
@@ -67,7 +69,6 @@ public class CustomMenuImplement implements CustomMenu {
             } else {
                 System.err.println("Card number is wrong or not exist");
             }
-
         }
     }
 

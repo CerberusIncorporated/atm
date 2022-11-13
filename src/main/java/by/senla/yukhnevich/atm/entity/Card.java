@@ -6,8 +6,8 @@ package by.senla.yukhnevich.atm.entity;
 public class Card {
 
     private int isBlock;
-    private String cardNumber;
-    private int pinCode;
+    private final String cardNumber;
+    private final int pinCode;
     private int balance;
 
     /**

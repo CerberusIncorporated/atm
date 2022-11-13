@@ -47,7 +47,6 @@ public class CustomReaderImplement implements CustomReader {
         }
         ArrayList<String> list = new ArrayList<>();
         String[] lines = new String(content).split(System.lineSeparator());
-        int i = 1;
         for (String line : lines) {
             String[] numbers = line.split(" ");
             int j = 1;
@@ -57,12 +56,10 @@ public class CustomReaderImplement implements CustomReader {
                     list.add(cardNumber);
                     list.add(numbers[j]);
                     list.add(numbers[j + 1]);
-                    System.out.println(list);
                     return list;
                 }
                 j++;
             }
-            i++;
         }
         return null;
     }

@@ -14,10 +14,7 @@ public class CustomSecurityAtm {
      * @return - true if pin code equal
      */
     public boolean checkPin(int cardPin, int inputUserPin) {
-        if (cardPin == inputUserPin) {
-            return true;
-        }
-        return false;
+        return cardPin == inputUserPin;
     }
 
     /**
@@ -27,9 +24,6 @@ public class CustomSecurityAtm {
      * @return - true is card blocked
      */
     public boolean checkBlock(Card card) {
-        if (card.getIsBlock() == 0) {
-            return true;
-        }
-        return false;
+        return card.getIsBlock() == 0;
     }
 }

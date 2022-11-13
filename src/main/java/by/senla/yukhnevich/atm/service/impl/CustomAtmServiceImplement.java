@@ -44,7 +44,10 @@ public class CustomAtmServiceImplement implements CustomAtmService {
     @Override
     public int withdraw(Card card, int amount) throws CustomAtmException {
         int money = 0;
-        if (card.getBalance() >= amount && atm.getAtmAmount() >= amount && amount > 0) {
+        if(amount <= 0){
+            System.err.println("Type number more than zero.");
+        }
+        else if (card.getBalance() >= amount && atm.getAtmAmount() >= amount) {
             int oldMoney = card.getBalance();
             money = card.getBalance() - amount;
             card.setBalance(money);
@@ -70,7 +73,10 @@ public class CustomAtmServiceImplement implements CustomAtmService {
     @Override
     public int replenishment(Card card, int amount) throws CustomAtmException {
         int money = 0;
-        if (amount < 1000000 && amount > 0) {
+        if(amount <= 0){
+            System.err.println("Type number more than zero.");
+        }
+        else if (amount < 1000000) {
             int oldMoney = card.getBalance();
             money = card.getBalance() + amount;
             card.setBalance(money);
